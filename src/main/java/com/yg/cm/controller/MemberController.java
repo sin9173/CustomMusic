@@ -20,6 +20,7 @@ public class MemberController {
     }
 
     @Operation(summary = "비밀번호 수정", description = "비밀번호 수정")
+    @PatchMapping("/member/password")
     public String password_modify(@RequestHeader("userId") String user_id) {
         return null;
     }
@@ -42,5 +43,22 @@ public class MemberController {
         return null;
     }
 
+    @Operation(summary = "프로필 이미지 등록", description = "프로필 이미지를 등록합니다.")
+    @PostMapping("/profile/image")
+    public String profileImage(@RequestHeader("userId") String user_id) {
+        return null;
+    }
+
+    @Operation(summary = "프로필 이미지 수정", description = "프로필 이미지 정보를 수정합니다.")
+    @PatchMapping("/profile/image")
+    public String profileImageModify(@RequestHeader("userId") String user_id) {
+        return null;
+    }
+
+    @Operation(summary = "프로필 이미지 삭제", description = "프로필 이미지를 삭제합니다.")
+    @DeleteMapping("/profile/image")
+    public String profileImageDelete(@RequestHeader("userId") String user_id) {
+        return null;
+    }
 
 }
