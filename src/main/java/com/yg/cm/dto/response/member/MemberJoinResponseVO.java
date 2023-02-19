@@ -1,6 +1,6 @@
-package com.yg.cm.vo.response.member;
+package com.yg.cm.dto.response.member;
 
-import com.yg.cm.vo.response.ResponseVO;
+import com.yg.cm.dto.response.ResponseVO;
 import lombok.Getter;
 import lombok.ToString;
 

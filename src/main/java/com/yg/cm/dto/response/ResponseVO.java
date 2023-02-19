@@ -1,4 +1,4 @@
-package com.yg.cm.vo.response;
+package com.yg.cm.dto.response;
 
 import lombok.Getter;
 import lombok.ToString;

@@ -1,4 +1,4 @@
-package com.yg.cm.vo.request.member;
+package com.yg.cm.dto.request.member;
 
 import lombok.Getter;
 import lombok.ToString;
