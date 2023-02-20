@@ -1,5 +1,6 @@
 package com.yg.cm.entity.member;
 
+import com.yg.cm.dto.request.member.MemberJoinRequestDto;
 import com.yg.cm.entity.TimeAndDelete;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -32,6 +33,11 @@ public class Member extends TimeAndDelete { //회원 엔티티
     public Member(String userId, String user_pw) {
         this.userId = userId;
         this.userPw = user_pw;
+    }
+
+    public Member(MemberJoinRequestDto dto) {
+        this.userId = dto.getUser_id();
+        this.userPw = dto.getUser_pw();
     }
 
     public void addProfile(Profile profile) {

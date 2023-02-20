@@ -1,16 +1,23 @@
-package com.yg.cm.controller;
+package com.yg.cm.controller.web;
 
 
+import com.yg.cm.dto.request.member.MemberJoinRequestDto;
+import com.yg.cm.dto.response.member.MemberJoinResponseDto;
+import com.yg.cm.service.MemberService;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 public class MemberController {
+
+    private final MemberService memberService;
 
     @Operation(summary = "회원가입", description = "회원가입을 합니다.")
     @PostMapping("/member")
-    public String member() {
-        return null;
+    public MemberJoinResponseDto member(@RequestBody MemberJoinRequestDto data) {
+        return memberService.memberJoin(data);
     }
 
     @Operation(summary = "회원 아이디 체크", description = "아이디 사용 가능여부를 확인합니다.")

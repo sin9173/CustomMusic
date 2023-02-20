@@ -1,4 +1,4 @@
-package com.yg.cm.controller;
+package com.yg.cm.controller.web;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
