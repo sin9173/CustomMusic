@@ -22,9 +22,9 @@ public class Profile extends TimeAndDelete { //회원 정보
     @Column(name = "profile_id")
     private Long id;
 
-    private String name;
+    private String name; //이름
 
-    private String email;
+    private String email; //이메일
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
