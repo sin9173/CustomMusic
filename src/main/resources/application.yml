@@ -26,6 +26,12 @@ spring:
         default-page-size: 10
         max-page-size: 2000
         one-indexed-parameters: true
+  #REDIS (LETTUCE)
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
 
 springdoc:
   swagger-ui:
@@ -41,6 +47,11 @@ springdoc:
   default-produces-media-type: application/json
   paths-to-match: /**
 
+jwt:
+  header: Authorization
+  secret: c2aiomVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQtc2lsdmVybmluZS10ZWNoLXNwcmluZy1ib290LWp3dC10dXRvcmlhbC1zZWNyZXQK
+  token-millis : 600000
+  token-refresh-millis: 100000000
   
 logging:
   level:
