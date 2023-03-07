@@ -1,6 +1,7 @@
 package com.yg.cm.controller.web;
 
 
+import com.yg.cm.dto.auth.AuthSuccessDto;
 import com.yg.cm.dto.request.member.MemberJoinRequestDto;
 import com.yg.cm.dto.request.member.MemberPasswordModifyRequestDto;
 import com.yg.cm.dto.response.ErrorResponseDto;
@@ -14,7 +15,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,6 +41,7 @@ public class MemberController {
         return memberService.idCheck(user_id);
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "비밀번호 수정", description = "비밀번호 수정", responses = {
             @ApiResponse(responseCode = "200", description = "OK", useReturnTypeSchema = true),
             @ApiResponse(responseCode = "422", description = "잘못된 비밀번호", content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))
@@ -49,17 +54,27 @@ public class MemberController {
     }
 
     @Operation(summary = "로그인", description = "로그인을 합니다.")
-    @PostMapping("/auth")
+    @PostMapping("/login")
     public String auth() {
-        return null;
+        return "로그인";
     }
 
+    @Operation(summary = "토큰재발급", description = "토큰을 재발급 받습니다.")
+    @PostMapping("/reissue")
+    public ResponseEntity<ResponseDto<AuthSuccessDto>> reissue(
+            @RequestHeader("userId") String user_id,
+            HttpServletResponse response) {
+        return memberService.reissue(user_id, response);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "회원수정", description = "회원정보를 수정합니다.")
     @PutMapping("/member")
     public String memberModify(@RequestHeader("userId") String user_id) {
         return null;
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "회원탈퇴", description = "회원탈퇴를 합니다.")
     @DeleteMapping("/member")
     public String memberDelete(@RequestHeader("userId") String user_id) {

@@ -31,10 +31,12 @@ public class MemberQueryService {
         return member.getId();
     }
 
-    public Member getAuthMember(String user_id, String password) { //회원 인증 후 가져오기
-        Member member = memberRepository.findByUserId(user_id).get();
-        if(!member.getUserPw().equals(password)) return null;
-        return member;
+    public Member getMember(String user_id) { //회원 인증 후 가져오기
+        return memberRepository.findByUserId(user_id).get();
+    }
+
+    public Member getAuthMember(String user_id) {
+        return memberRepository.findAuthByUserId(user_id).get();
     }
 
 }

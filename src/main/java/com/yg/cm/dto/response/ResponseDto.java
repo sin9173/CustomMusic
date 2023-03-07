@@ -24,6 +24,14 @@ public class ResponseDto<T> {
         this.data = data;
     }
 
+    public static <T> ResponseDto getResponseDto(T data) {
+        return new ResponseDto(data);
+    }
+
+    public static <T> ErrorResponseDto getResponseDto(Integer status, Integer code, String message) {
+        return new ErrorResponseDto(code, message);
+    }
+
     public static <T>ResponseEntity getResponse(T data) {
         return ResponseEntity.ok()
                 .body(new ResponseDto<T>(data));
